@@ -149,8 +149,8 @@ function git_prompt_minimal_info {
     SCM_BRANCH=${SCM_THEME_BRANCH_PREFIX}${ref}
 
     # Get the status
-    [[ "${SCM_GIT_IGNORE_UNTRACKED}" = "true" ]] && git_status_flags+='-untracked-files=no'
-    status=$(command git status ${git_status_flags} 2> /dev/null | tail -n1)
+    [[ "${SCM_GIT_IGNORE_UNTRACKED}" = "true" ]] && git_status_flags+=('-untracked-files=no')
+    status=$(command git status "${git_status_flags[@]}" 2> /dev/null | tail -n1)
 
     if [[ -n ${status} ]]; then
       SCM_DIRTY=1
